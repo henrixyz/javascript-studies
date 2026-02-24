@@ -29,15 +29,15 @@ form.addEventListener("submit", (event) =>{
     
         if (select.value === "USD"){
             convert = convertToReal(currentUSD);
-            description.innerText = `$1 = R$${currentUSD}`
+            description.innerText = `$1 = R$${String(currentUSD).replace(".",",")}`
     
         }else if(select.value === "GBP"){
             convert = convertToReal(currentGBP);
-            description.innerText = `£1 = R$${currentGBP}`
+            description.innerText = `£1 = R$${String(currentGBP).replace(".",",")}`
             
         }else{
             convert = convertToReal(currentEUR);
-            description.innerText = `€1 = R$${currentEUR}`
+            description.innerText = `€1 = R$${String(currentEUR).replace(".",",")}`
         }
     
         result.innerText = convert.toLocaleString("pt-BR", {
