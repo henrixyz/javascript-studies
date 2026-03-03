@@ -50,6 +50,7 @@ function render(){
 function marcarAtividade(){
 
     const tarefas = document.querySelectorAll(".tarefa");
+    let last_tap = 0
     
     tarefas.forEach((tarefa) =>{
 
@@ -57,10 +58,24 @@ function marcarAtividade(){
             console.log("deu aqui");
             const index = tarefa.dataset.index;
             ativities[index].concluido = !ativities[index].concluido;
-
+            
             render();
-
         })
+        
+        tarefa.addEventListener("touchend", (e)=>{
+            const now = Date.now()
+            const delay = now - last_tap
+            
+            if (delay < 300 && delay > 0){
+                e.preventDefault()
+                const index = tarefa.dataset.index;
+                ativities[index].concluido = !ativities[index].concluido;
+                render()
+            }
+
+            last_tap = now
+        }) 
+
     })
 
 }

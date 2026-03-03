@@ -7,18 +7,21 @@
 
 body {
     background: #f4f6f8;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 20px;
 }
 
 .card {
     background: #ffffff;
-    width: 360px;
+    width: 100%;
+    max-width: 400px;
     padding: 25px;
     border-radius: 18px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-top: 20px;
 }
 
 .logo {
@@ -28,11 +31,11 @@ body {
     height: auto;
 }
 
-
 h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
+    font-size: clamp(18px, 5vw, 24px);
 }
 
 .input-area {
@@ -47,7 +50,8 @@ input {
     border-radius: 10px;
     border: 1px solid #ddd;
     outline: none;
-    font-size: 14px;
+    font-size: 16px;
+    min-width: 0;
 }
 
 input:focus {
@@ -64,13 +68,14 @@ button {
     cursor: pointer;
     transition: 0.2s;
     font-size: 16px;
+    white-space: nowrap;
+    touch-action: manipulation;
 }
 
 button:hover {
     transform: scale(1.05);
     opacity: 0.95;
 }
-
 
 #listaTarefas {
     list-style: none;
@@ -88,6 +93,7 @@ button:hover {
 
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: 0.2s;
+    touch-action: manipulation;
 }
 
 .tarefa:hover {
@@ -97,9 +103,11 @@ button:hover {
 .tarefa span {
     font-size: 14px;
     color: #333;
+    word-break: break-word;
+    margin-right: 10px;
 }
 
-.concluida{
+.concluida {
     text-decoration: line-through;
     color: #636262;
 }
@@ -107,11 +115,29 @@ button:hover {
 .remover {
     color: #ff4d4d;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     transition: 0.2s;
 }
 
 .remover:hover {
     color: #cc0000;
     transform: scale(1.2);
+}
+
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .card {
+        padding: 18px;
+        border-radius: 14px;
+        margin-top: 10px;
+    }
+
+    input, button {
+        font-size: 16px;
+    }
 }
