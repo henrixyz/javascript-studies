@@ -87,7 +87,7 @@ function apagarAtividade(){
     btn_remover.forEach((btn)=>{
 
         btn.addEventListener("click", (e) =>{
-
+            e.stopPropagation()
             const index = e.target.closest(".tarefa").dataset.index
             ativities.splice(index, 1)
             render()
